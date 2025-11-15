@@ -1,0 +1,28 @@
+{
+    "members": [
+        {
+            "name": "PrimeTech Solutions",
+            "membership": "gold",
+            "tagline": "Innovating Jos through technology",
+            "email": "info@primetech.com",
+            "phone": "08012345678",
+            "website": "https://primetech.com"
+        },
+        {
+            "name": "BlueSky Catering",
+            "membership": "silver",
+            "tagline": "Quality meals for every event",
+            "email": "contact@bluesky.com",
+            "phone": "08123456789",
+            "website": "https://bluesky.com"
+        },
+        {
+            "name": "Metro Hardware",
+            "membership": "gold",
+            "tagline": "Tools you can trust",
+            "email": "metro@hardware.com",
+            "phone": "09011223344",
+            "website": "https://metrohardware.com"
+        }
+    ]
+}

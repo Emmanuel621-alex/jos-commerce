@@ -1,21 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Jos Metro Business Alliance - Supporting local businesses, networking, and economic growth in Jos, Plateau State.">
-<meta name="robots" content="index, follow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Jos Metro Business Alliance - Supporting local businesses, networking, and economic growth in Jos, Plateau State.">
 
-<title>Jos Metro Business Alliance</title>
+  <title>Jos Metro Business Alliance</title>
 
-<!-- Google Font -->
-<link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+  <!-- Preconnect for better performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<!-- Styles -->
-<link rel="stylesheet" href="style/small.css" media="all">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
-<!-- Favicon -->
-<link rel="icon" href="images/favicon.png" type="image/png">
+  <!-- Styles -->
+  <link rel="stylesheet" href="style/small.css" media="all">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 
 <body>
@@ -24,8 +27,11 @@
   <div class="header-container">
     <h1>Jos Metro Business Alliance</h1>
 
-    <nav id="main-nav" aria-label="Main Navigation">
-      <button id="hamburger" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-menu">&#9776;</button>
+    <nav id="main-nav" aria-label="Main navigation">
+      <button id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="nav-menu">
+        &#9776;
+      </button>
+
       <ul id="nav-menu" class="nav-links">
         <li><a href="index.html" class="active">Home</a></li>
         <li><a href="directory.html">Directory</a></li>
@@ -34,21 +40,23 @@
       </ul>
     </nav>
 
-    <button id="dark-toggle" aria-label="Toggle Dark Mode" aria-pressed="false">🌓</button>
+    <button id="dark-toggle" aria-label="Toggle dark mode" aria-pressed="false">🌓</button>
   </div>
 </header>
 
 <!-- HERO -->
 <section class="hero">
-  <img src="image/hero.png" 
-       alt="City of Jos skyline" 
-       class="hero-img" 
-       loading="lazy" 
-       width="1600" 
-       height="600" 
-       srcset="image/hero-small.png 600w, image/hero-medium.png 1200w, image/hero.png 1600w" 
-       sizes="(max-width: 600px) 100vw, 100vw">
-  <a class="cta-btn" href="#" role="button" aria-label="Purchase Keynote Tickets">Keynote Tickets</a>
+  <img 
+    src="image/hero.png"
+    alt="City of Jos skyline"
+    class="hero-img"
+    loading="lazy"
+    width="1600"
+    height="600"
+    srcset="image/hero-small.png 600w, image/hero-medium.png 1200w, image/hero.png 1600w"
+    sizes="100vw">
+
+  <a class="cta-btn" href="#" role="button">Keynote Tickets</a>
 </section>
 
 <main class="main-content">
@@ -57,7 +65,7 @@
   <section class="info-grid">
 
     <!-- EVENTS -->
-    <section class="events card" aria-label="Upcoming Events">
+    <section class="events card">
       <h2>Upcoming Events</h2>
       <ul>
         <li>📅 Business Networking Conference – Jan 2025</li>
@@ -67,15 +75,15 @@
     </section>
 
     <!-- CURRENT WEATHER -->
-    <section class="weather card" aria-label="Current Weather">
+    <section class="weather card">
       <h2>Current Weather</h2>
-      <img id="weather-icon" alt="Weather Icon" width="80" height="80">
+      <img id="weather-icon" alt="Weather condition icon" width="80" height="80">
       <p><span id="temp"></span>°C</p>
       <p id="weather-desc"></p>
     </section>
 
     <!-- 3-DAY FORECAST -->
-    <section class="forecast card" aria-label="3-Day Weather Forecast">
+    <section class="forecast card">
       <h2>3-Day Forecast</h2>
       <ul id="forecast-list"></ul>
     </section>
@@ -83,13 +91,13 @@
   </section>
 
   <!-- BUSINESS SPOTLIGHT -->
-  <section class="spotlights" aria-label="Business Spotlights">
+  <section class="spotlights">
     <h2>Business Spotlights</h2>
     <div id="spotlight-container" class="spotlight-grid"></div>
   </section>
 
   <!-- SAMPLE BUSINESS CARDS -->
-  <section class="container" aria-label="Sample Businesses">
+  <section class="container">
 
     <article class="card">
       <h3>Electronic Appliances</h3>
@@ -97,7 +105,7 @@
       <p>Your Trusted Source for All Electronics</p>
       <p>Email: <a href="mailto:alexanderedache4@gmail.com">alexanderedache4@gmail.com</a></p>
       <p>Phone: 800-555-1233</p>
-      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener noreferrer">www.ebusiness.com</a></p>
+      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener">www.ebusiness.com</a></p>
     </article>
 
     <article class="card">
@@ -106,7 +114,7 @@
       <p>Your Trusted Source for All Building Materials</p>
       <p>Email: <a href="mailto:alexanderedache4@gmail.com">alexanderedache4@gmail.com</a></p>
       <p>Phone: 800-555-1234</p>
-      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener noreferrer">www.ebusiness.com</a></p>
+      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener">www.ebusiness.com</a></p>
     </article>
 
     <article class="card">
@@ -115,7 +123,7 @@
       <p>Your Trusted Source for All Fashion Clothing</p>
       <p>Email: <a href="mailto:alexanderedache4@gmail.com">alexanderedache4@gmail.com</a></p>
       <p>Phone: 800-555-1235</p>
-      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener noreferrer">www.ebusiness.com</a></p>
+      <p>URL: <a href="http://www.ebusiness.com" target="_blank" rel="noopener">www.ebusiness.com</a></p>
     </article>
 
   </section>
@@ -124,6 +132,7 @@
 
 <footer>
   <div class="footer-content">
+
     <address class="contact">
       <p>Jos Metro Business Alliance</p>
       <p>No. 007 Street, Jos, Plateau State</p>
@@ -131,9 +140,15 @@
     </address>
 
     <div class="socials">
-      <a href="#" aria-label="Facebook"><img src="image/Facebook.svg" alt="Facebook" width="28" height="30"></a>
-      <a href="#" aria-label="Twitter"><img src="image/twitter-x.svg" alt="Twitter X" width="28" height="30"></a>
-      <a href="#" aria-label="LinkedIn"><img src="image/linkedin.svg" alt="LinkedIn" width="28" height="30"></a>
+      <a href="#" aria-label="Facebook">
+        <img src="image/Facebook.svg" alt="Facebook logo" width="28" height="30">
+      </a>
+      <a href="#" aria-label="Twitter X">
+        <img src="image/twitter-x.svg" alt="Twitter X logo" width="28" height="30">
+      </a>
+      <a href="#" aria-label="LinkedIn">
+        <img src="image/linkedin.svg" alt="LinkedIn logo" width="28" height="30">
+      </a>
     </div>
 
     <div class="copyright">
@@ -141,15 +156,17 @@
       <p>Emmanuel Edache</p>
       <p>&copy; <span id="year"></span> | Last Modified: <span id="last-modified"></span></p>
     </div>
+
   </div>
 </footer>
 
-<!-- JS Scripts -->
+<!-- JS -->
 <script src="scripts/spotlight.js" defer></script>
 <script src="scripts/weather.js" defer></script>
 
 <script defer>
 document.addEventListener("DOMContentLoaded", () => {
+  // Footer dates
   document.getElementById("year").textContent = new Date().getFullYear();
   document.getElementById("last-modified").textContent = document.lastModified;
 

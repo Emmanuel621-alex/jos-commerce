@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Join Jos Metro Business Alliance - membership sign up" />
+  <title>Join — Jos Metro Business Alliance</title>
+
+  <!-- Social / Open Graph (SEO & social preview) -->
+  <meta property="og:title" content="Join — Jos Metro Business Alliance">
+  <meta property="og:description" content="Become a member of the Jos Metro Business Alliance. Sign up for NP, Bronze, Silver, or Gold membership.">
+  <meta property="og:image" content="images/social-preview.jpg">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yourdomain.com/join.html">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Google Fonts: preconnect to reduce render-blocking -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- Styles (global + page-specific) -->
+  <link rel="stylesheet" href="style/small.css" media="all">
+  <link rel="stylesheet" href="style/join.css" media="all">
+
+  <!-- Favicon -->
+  <link rel="icon" href="images/favicon.png" type="image/png">
+</head>
+<body>
+  <!-- Header / Navigation (same structure as home page) -->
+  <header>
+    <div class="header-container">
+      <h1>Jos Metro Business Alliance</h1>
+
+      <nav id="main-nav" aria-label="Main Navigation">
+        <button id="hamburger" aria-label="Toggle Navigation Menu" aria-expanded="false" aria-controls="nav-menu">&#9776;</button>
+        <ul id="nav-menu" class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="join.html" class="active" aria-current="page">Join</a></li>
+          <li><a href="discover.html">Discover</a></li>
+        </ul>
+      </nav>
+
+      <button id="dark-toggle" aria-label="Toggle Dark Mode" aria-pressed="false">🌓</button>
+    </div>
+  </header>
+
+  <main class="main-content container-form" id="main">
+    <h2 class="page-title">Become a Member</h2>
+
+    <section class="form-and-cards">
+
+      <!-- FORM -->
+      <form id="join-form" class="join-form card" method="get" action="thankyou.html" novalidate>
+        <fieldset>
+          <legend>Membership Application</legend>
+
+          <!-- First name -->
+          <label for="firstName" class="label-text">First name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            title="Applicant's first name"
+            autocomplete="given-name"
+            required
+            inputmode="text"
+            />
+
+          <!-- Last name -->
+          <label for="lastName" class="label-text">Last name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            title="Applicant's last name"
+            autocomplete="family-name"
+            required
+            inputmode="text"
+            />
+
+          <!-- Organizational title -->
+          <label for="orgTitle" class="label-text">Organizational title</label>
+          <input
+            type="text"
+            name="orgTitle"
+            id="orgTitle"
+            title="Applicant's job or organizational title (letters, hyphens, spaces only, at least 7 characters)"
+            autocomplete="organization-title"
+            pattern="^[A-Za-z\s-]{7,}$"
+            placeholder="e.g., Regional Manager"
+            />
+          <small class="hint">Letters, hyphens and spaces only; minimum 7 characters.</small>
+
+          <!-- Email -->
+          <label for="email" class="label-text">Email <span aria-hidden="true">*</span></label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            title="Applicant's email address"
+            autocomplete="email"
+            required
+            placeholder="name@example.com"
+            />
+
+          <!-- Mobile phone -->
+          <label for="mobile" class="label-text">Mobile phone <span aria-hidden="true">*</span></label>
+          <input
+            type="tel"
+            name="mobile"
+            id="mobile"
+            title="Applicant's mobile phone number"
+            autocomplete="tel"
+            required
+            placeholder="+2348012345678"
+            />
+
+          <!-- Business/Organization name -->
+          <label for="orgName" class="label-text">Business / Organization name <span aria-hidden="true">*</span></label>
+          <input
+            type="text"
+            name="orgName"
+            id="orgName"
+            title="Business or organization name"
+            autocomplete="organization"
+            required
+            />
+
+          <!-- Membership level -->
+          <label for="membership" class="label-text">Membership level <span aria-hidden="true">*</span></label>
+          <select name="membership" id="membership" title="Select membership level" required>
+            <option value="" disabled selected>Select a membership level</option>
+            <option value="np">NP Membership — Non-Profit (no fee)</option>
+            <option value="bronze">Bronze Membership</option>
+            <option value="silver">Silver Membership</option>
+            <option value="gold">Gold Membership</option>
+          </select>
+
+          <!-- Business description -->
+          <label for="orgDesc" class="label-text">Business / Organization description</label>
+          <textarea
+            name="orgDesc"
+            id="orgDesc"
+            title="Brief description of your business or organization"
+            rows="4"
+            ></textarea>
+
+          <!-- Hidden timestamp -->
+          <input type="hidden" name="timestamp" id="timestamp" value="">
+
+          <!-- Submit -->
+          <div class="submit-wrapper">
+            <input type="submit" value="Submit Application" aria-label="Submit membership application">
+          </div>
+        </fieldset>
+      </form>
+
+      <!-- MEMBERSHIP CARDS (animated on page load) -->
+      <aside class="membership-cards">
+        <h3 class="visually-hidden">Membership Levels</h3>
+
+        <div class="cards-grid" id="cards-grid" aria-live="polite">
+          <!-- NP -->
+          <article class="membership-card card" data-membership="np">
+            <h4>NP Membership</h4>
+            <p>No fee — Non-profit organizations</p>
+            <a href="#" class="more-info" data-dialog="dialog-np">View benefits</a>
+            <a class="details-link" href="#join-form" aria-label="Apply for NP Membership">Apply</a>
+          </article>
+
+          <!-- Bronze -->
+          <article class="membership-card card" data-membership="bronze">
+            <h4>Bronze Membership</h4>
+            <p>Affordable entry level benefits</p>
+            <a href="#" class="more-info" data-dialog="dialog-bronze">View benefits</a>
+            <a class="details-link" href="#join-form" aria-label="Apply for Bronze Membership">Apply</a>
+          </article>
+
+          <!-- Silver -->
+          <article class="membership-card card" data-membership="silver">
+            <h4>Silver Membership</h4>
+            <p>Includes advertising and event discounts</p>
+            <a href="#" class="more-info" data-dialog="dialog-silver">View benefits</a>
+            <a class="details-link" href="#join-form" aria-label="Apply for Silver Membership">Apply</a>
+          </article>
+
+          <!-- Gold -->
+          <article class="membership-card card" data-membership="gold">
+            <h4>Gold Membership</h4>
+            <p>Premium benefits, priority spotlight</p>
+            <a href="#" class="more-info" data-dialog="dialog-gold">View benefits</a>
+            <a class="details-link" href="#join-form" aria-label="Apply for Gold Membership">Apply</a>
+          </article>
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <!-- Dialog modals (kept as-is; your join.js will handle showModal/close) -->
+  <dialog id="dialog-np" class="membership-dialog" aria-labelledby="dialog-np-title">
+    <h3 id="dialog-np-title">NP Membership — Benefits</h3>
+    <div class="dialog-body">
+      <ul>
+        <li>Listing in our directory (basic)</li>
+        <li>Access to volunteer-centered events</li>
+        <li>Community support resources</li>
+      </ul>
+    </div>
+    <menu class="dialog-actions">
+      <button class="dialog-close">Close</button>
+    </menu>
+  </dialog>
+
+  <dialog id="dialog-bronze" class="membership-dialog" aria-labelledby="dialog-bronze-title">
+    <h3 id="dialog-bronze-title">Bronze Membership — Benefits</h3>
+    <div class="dialog-body">
+      <ul>
+        <li>Directory listing with logo</li>
+        <li>Invitations to networking events</li>
+        <li>Discounts to local workshops</li>
+      </ul>
+    </div>
+    <menu class="dialog-actions">
+      <button class="dialog-close">Close</button>
+    </menu>
+  </dialog>
+
+  <dialog id="dialog-silver" class="membership-dialog" aria-labelledby="dialog-silver-title">
+    <h3 id="dialog-silver-title">Silver Membership — Benefits</h3>
+    <div class="dialog-body">
+      <ul>
+        <li>Featured spotlight on homepage</li>
+        <li>Priority event registration</li>
+        <li>Advertising opportunities</li>
+      </ul>
+    </div>
+    <menu class="dialog-actions">
+      <button class="dialog-close">Close</button>
+    </menu>
+  </dialog>
+
+  <dialog id="dialog-gold" class="membership-dialog" aria-labelledby="dialog-gold-title">
+    <h3 id="dialog-gold-title">Gold Membership — Benefits</h3>
+    <div class="dialog-body">
+      <ul>
+        <li>Premium homepage spotlight</li>
+        <li>Exclusive training & events</li>
+        <li>Top-tier advertising packages</li>
+      </ul>
+    </div>
+    <menu class="dialog-actions">
+      <button class="dialog-close">Close</button>
+    </menu>
+  </dialog>
+
+  <!-- Footer (same pattern as home page) -->
+  <footer>
+    <div class="footer-content">
+      <address class="contact">
+        <p>Jos Metro Business Alliance</p>
+        <p>No. 007 Street, Jos, Plateau State</p>
+        <p>Email: <a href="mailto:alexanderedache4@gmail.com">alexanderedache4@gmail.com</a> | Phone: 08104266274</p>
+      </address>
+
+      <div class="socials">
+        <a href="#" aria-label="Facebook"><img src="image/Facebook.svg" alt="" width="28" height="30"></a>
+        <a href="#" aria-label="Twitter"><img src="image/twitter-x.svg" alt="" width="28" height="30"></a>
+        <a href="#" aria-label="LinkedIn"><img src="image/linkedin.svg" alt="" width="28" height="30"></a>
+      </div>
+
+      <div class="copyright">
+        <p>WDD231 Class Project</p>
+        <p>Emmanuel Edache</p>
+        <p>&copy; <span id="year"></span> | Last Modified: <span id="last-modified"></span></p>
+      </div>
+    </div>
+  </footer>
+
+<!-- JS Scripts (versioned for caching best practices) -->
+<script src="scripts/spotlight.js?v=1" defer></script>
+<script src="scripts/weather.js?v=1" defer></script>
+<script src="scripts/join.js?v=1" defer></script>
+
+<script defer>
+document.addEventListener("DOMContentLoaded", () => {
+  // set year / last-modified
+  const yearEl = document.getElementById("year");
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  const lm = document.getElementById("last-modified");
+  if (lm) lm.textContent = document.lastModified;
+
+  // Header nav toggles (re-used)
+  const navLinks = document.querySelector(".nav-links");
+  const hamburger = document.getElementById("hamburger");
+  const darkToggle = document.getElementById("dark-toggle");
+
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      const isOpen = navLinks.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", isOpen);
+    });
+  }
+
+  // Dark mode: restore saved preference and wire toggle
+  const saved = localStorage.getItem("dark-mode");
+  if (saved === "enabled") {
+    document.body.classList.add("dark");
+    if (darkToggle) darkToggle.setAttribute("aria-pressed", "true");
+  } else {
+    // If user prefers dark by system and no saved preference, apply it
+    if (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.body.classList.add("dark");
+      if (darkToggle) darkToggle.setAttribute("aria-pressed", "true");
+    }
+  }
+
+  if (darkToggle) {
+    darkToggle.addEventListener("click", () => {
+      const isActive = document.body.classList.toggle("dark");
+      darkToggle.setAttribute("aria-pressed", isActive ? "true" : "false");
+      localStorage.setItem("dark-mode", isActive ? "enabled" : "disabled");
+    });
+  }
+});
+</script>
+
+</body>
+</html>

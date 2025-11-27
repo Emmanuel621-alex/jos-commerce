@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Thank you for joining — Jos Metro Business Alliance" />
+  <title>Thank you — Jos Metro Business Alliance</title>
+  <link rel="stylesheet" href="style/small.css" media="all">
+  <link rel="stylesheet" href="style/join.css" media="all">
+  <style>
+    .summary { max-width:700px; margin:1.25rem auto; padding:1rem; border-radius:8px; background:#f8f9fb;}
+    dt { font-weight:700; }
+    dd { margin:0 0 0.75rem 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="header-container">
+      <h1>Jos Metro Business Alliance</h1>
+      <nav id="main-nav" aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="directory.html">Directory</a></li>
+          <li><a href="join.html">Join</a></li>
+          <li><a href="discover.html">Discover</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <h2 class="page-title">Thank you for your application</h2>
+
+    <section class="summary" aria-live="polite">
+      <p id="intro">We received your membership application. Below is a summary — please keep it for your records.</p>
+
+      <dl id="summary-list">
+        <dt>First name</dt>
+        <dd id="out-firstName">—</dd>
+
+        <dt>Last name</dt>
+        <dd id="out-lastName">—</dd>
+
+        <dt>Email</dt>
+        <dd id="out-email">—</dd>
+
+        <dt>Mobile phone</dt>
+        <dd id="out-mobile">—</dd>
+
+        <dt>Business / Organization name</dt>
+        <dd id="out-orgName">—</dd>
+
+        <dt>Membership level</dt>
+        <dd id="out-membership">—</dd>
+
+        <dt>Form loaded (timestamp)</dt>
+        <dd id="out-timestamp">—</dd>
+      </dl>
+
+      <p>If you need to make a correction, <a href="join.html">go back to the form</a>.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <p>&copy; <span id="year"></span> Jos Metro Business Alliance</p>
+    </div>
+  </footer>
+
+  <script>
+    // Parse query and display values safely (escape)
+    function decodeParam(v) {
+      try { return decodeURIComponent(v.replace(/\+/g, ' ')); }
+      catch (e) { return v; }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+
+      const setText = (id, key, fallback = '—') => {
+        const el = document.getElementById(id);
+        const val = params.get(key);
+        if (!el) return;
+        if (val) {
+          // Basic escaping for text nodes
+          el.textContent = decodeParam(val);
+        } else {
+          el.textContent = fallback;
+        }
+      };
+
+      setText('out-firstName', 'firstName');
+      setText('out-lastName', 'lastName');
+      setText('out-email', 'email');
+      setText('out-mobile', 'mobile');
+      setText('out-orgName', 'orgName');
+
+      // Convert membership code to readable
+      const membershipMap = {
+        np: 'NP Membership — Non-Profit (no fee)',
+        bronze: 'Bronze Membership',
+        silver: 'Silver Membership',
+        gold: 'Gold Membership'
+      };
+      const mem = params.get('membership');
+      const memText = mem ? (membershipMap[mem] || mem) : '—';
+      document.getElementById('out-membership').textContent = memText;
+
+      // Timestamp: show local date/time if present
+      const ts = params.get('timestamp');
+      if (ts) {
+        // Try to parse ISO
+        let t = ts;
+        try {
+          const d = new Date(ts);
+          if (!isNaN(d)) t = d.toLocaleString();
+        } catch (e) {}
+        document.getElementById('out-timestamp').textContent = t;
+      }
+
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+    });
+  </script>
+</body>
+</html>

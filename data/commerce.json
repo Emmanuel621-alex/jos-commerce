@@ -1,0 +1,58 @@
+[
+  {
+    "title": "Small Business Growth Workshop",
+    "address": "Jos Metro Business Alliance, 12 Plateau Road, Jos",
+    "description": "A practical workshop designed for small business owners to learn strategies for sustainable growth, including marketing, financial planning, and customer engagement techniques tailored for local businesses.",
+    "image": "image/course2.webp",
+    "link": "courses/small-business-growth.html"
+  },
+  {
+    "title": "Entrepreneurship & Startups Seminar",
+    "address": "Jos Tech Hub, 15 Independence Avenue, Jos",
+    "description": "This seminar guides aspiring entrepreneurs through idea validation, business model creation, and access to local funding opportunities provided by the Chamber of Commerce.",
+    "image": "image/course1.webp",
+    "link": "courses/entrepreneurship.html"
+  },
+  {
+    "title": "Business Networking Event",
+    "address": "Plateau Conference Center, 8 Yakubu Gowon Way, Jos",
+    "description": "A monthly networking event for Chamber members to build partnerships, exchange insights, and collaborate on community and commercial initiatives.",
+    "image": "image/course3.webp",
+    "link": "courses/networking.html"
+  },
+  {
+    "title": "Export & Trade Compliance Training",
+    "address": "Jos Chamber Training Hall, 20 Bauchi Road, Jos",
+    "description": "Training focused on helping local businesses understand export regulations, international trade laws, and compliance standards to expand their reach beyond Nigeria.",
+    "image": "image/course4.webp",
+    "link": "courses/export-trade.html"
+  },
+  {
+    "title": "Digital Marketing for SMEs",
+    "address": "Jos Metro Business Alliance, 12 Plateau Road, Jos",
+    "description": "This program teaches small and medium enterprises to leverage digital marketing, social media campaigns, and e-commerce tools to increase sales and brand visibility.",
+    "image": "image/course5.webp",
+    "link": "courses/digital-marketing.html"
+  },
+  {
+    "title": "Financial Management & Accounting",
+    "address": "Plateau ICT Center, 8 Yakubu Gowon Way, Jos",
+    "description": "Focused sessions on effective bookkeeping, financial planning, tax compliance, and investment strategies to help Chamber members maintain profitable and compliant businesses.",
+    "image": "image/course6.webp",
+    "link": "courses/financial-management.html"
+  },
+  {
+    "title": "Leadership & Business Strategy",
+    "address": "Jos Conference Hall, 18 Ahmadu Bello Way, Jos",
+    "description": "A leadership development course that equips managers and business owners with strategic thinking, decision-making, and people management skills.",
+    "image": "image/course7.webp",
+    "link": "courses/leadership-strategy.html"
+  },
+  {
+    "title": "Sustainability & Corporate Social Responsibility",
+    "address": "Jos Metro Business Alliance, 12 Plateau Road, Jos",
+    "description": "Learn how to integrate sustainable business practices and social responsibility into operations, enhancing community impact and corporate reputation.",
+    "image": "image/course8.webp",
+    "link": "courses/sustainability.html"
+  }
+]

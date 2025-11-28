@@ -6,6 +6,7 @@
   <meta name="description" content="Join Jos Metro Business Alliance - membership sign up">
   <title>Join — Jos Metro Business Alliance</title>
 
+  <!-- Open Graph / Social Preview -->
   <meta property="og:title" content="Join — Jos Metro Business Alliance">
   <meta property="og:description" content="Become a member of the Jos Metro Business Alliance. Sign up for NP, Bronze, Silver, or Gold membership.">
   <meta property="og:image" content="images/social-preview.jpg">
@@ -13,13 +14,16 @@
   <meta property="og:url" content="https://yourdomain.com/join.html">
   <meta name="twitter:card" content="summary_large_image">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&display=swap" rel="stylesheet">
 
+  <!-- Styles -->
   <link rel="stylesheet" href="style/small.css" media="all">
   <link rel="stylesheet" href="style/join.css" media="all">
 
+  <!-- Favicon -->
   <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -45,6 +49,7 @@
     <section class="form-and-cards">
       <h2 class="section-title visually-hidden">Membership Application & Levels</h2>
 
+      <!-- Membership Form -->
       <form id="join-form" class="join-form card" method="get" action="thankyou.html" autocomplete="on">
         <fieldset>
           <legend>Membership Application</legend>
@@ -88,6 +93,7 @@
         </fieldset>
       </form>
 
+      <!-- Membership Cards -->
       <aside class="membership-cards">
         <h3 class="visually-hidden">Membership Levels</h3>
         <div class="cards-grid" id="cards-grid" aria-live="polite">
@@ -124,7 +130,7 @@
   </main>
 
   <!-- Dialogs -->
-  <dialog id="dialog-np" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-np-title">
+  <dialog id="dialog-np" class="membership-dialog" aria-modal="true" aria-labelledby="dialog-np-title">
     <h3 id="dialog-np-title">NP Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -138,7 +144,7 @@
     </div>
   </dialog>
 
-  <dialog id="dialog-bronze" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-bronze-title">
+  <dialog id="dialog-bronze" class="membership-dialog" aria-modal="true" aria-labelledby="dialog-bronze-title">
     <h3 id="dialog-bronze-title">Bronze Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -152,7 +158,7 @@
     </div>
   </dialog>
 
-  <dialog id="dialog-silver" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-silver-title">
+  <dialog id="dialog-silver" class="membership-dialog" aria-modal="true" aria-labelledby="dialog-silver-title">
     <h3 id="dialog-silver-title">Silver Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -166,7 +172,7 @@
     </div>
   </dialog>
 
-  <dialog id="dialog-gold" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-gold-title">
+  <dialog id="dialog-gold" class="membership-dialog" aria-modal="true" aria-labelledby="dialog-gold-title">
     <h3 id="dialog-gold-title">Gold Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -201,10 +207,10 @@
     </div>
   </footer>
 
+  <!-- JS -->
   <script src="scripts/spotlight.js?v=1" defer></script>
   <script src="scripts/weather.js?v=1" defer></script>
   <script src="scripts/join.js?v=1" defer></script>
   <script src="scripts/darkmode.js" defer></script>
-
 </body>
 </html>

@@ -139,3 +139,24 @@ document.addEventListener("DOMContentLoaded", () => {
   const pre = urlParams.get("membership");
   if (pre && membershipSelect) membershipSelect.value = pre;
 });
+document.addEventListener("DOMContentLoaded", () => {
+  // Footer dates
+  document.getElementById("year").textContent = new Date().getFullYear();
+  document.getElementById("last-modified").textContent = document.lastModified;
+
+  const navLinks = document.querySelector(".nav-links");
+  const hamburger = document.getElementById("hamburger");
+  const darkToggle = document.getElementById("dark-toggle");
+
+  // Mobile nav toggle
+  hamburger.addEventListener("click", () => {
+    const isOpen = navLinks.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", isOpen);
+  });
+
+  // Dark mode toggle
+  darkToggle.addEventListener("click", () => {
+    const isActive = document.body.classList.toggle("dark");
+    darkToggle.setAttribute("aria-pressed", isActive);
+  });
+});

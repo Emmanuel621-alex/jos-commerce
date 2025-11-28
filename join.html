@@ -20,17 +20,6 @@
   <link rel="stylesheet" href="style/small.css" media="all">
   <link rel="stylesheet" href="style/join.css" media="all">
 
-  <style>
-    .cards-grid { display:grid; gap:1rem; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); }
-    .membership-card { transform: translateY(12px); opacity: 0; transition: transform 420ms cubic-bezier(.2,.9,.2,1), opacity 420ms ease; will-change: transform, opacity; }
-    .membership-card.animate-in { transform: translateY(0); opacity: 1; }
-    @media (prefers-reduced-motion: reduce) {
-      .membership-card { transition: none; transform: none; opacity: 1; }
-    }
-    :focus { outline: 3px solid #2a6fcb; outline-offset: 2px; }
-    .visually-hidden { position: absolute !important; height: 1px; width: 1px; overflow: hidden; clip: rect(1px,1px,1px,1px); white-space: nowrap; }
-  </style>
-
   <link rel="icon" href="images/favicon.png" type="image/png">
 </head>
 <body>
@@ -54,7 +43,6 @@
     <h2 class="page-title">Become a Member</h2>
 
     <section class="form-and-cards">
-      <!-- Added heading to fix validator warning -->
       <h2 class="section-title visually-hidden">Membership Application & Levels</h2>
 
       <form id="join-form" class="join-form card" method="get" action="thankyou.html" autocomplete="on">
@@ -106,25 +94,28 @@
           <article class="membership-card card" data-membership="np" tabindex="0" aria-labelledby="np-title">
             <h4 id="np-title">NP Membership</h4>
             <p>No fee — Non-profit organizations</p>
-            <p><a href="#" class="more-info" data-dialog="dialog-np">View benefits</a></p>
+            <p><button type="button" class="more-info" data-dialog="dialog-np">View benefits</button></p>
             <p><a class="details-link apply-link" href="#join-form" data-membership="np" aria-label="Apply for NP Membership">Apply</a></p>
           </article>
+
           <article class="membership-card card" data-membership="bronze" tabindex="0" aria-labelledby="bronze-title">
             <h4 id="bronze-title">Bronze Membership</h4>
             <p>Affordable entry level benefits</p>
-            <p><a href="#" class="more-info" data-dialog="dialog-bronze">View benefits</a></p>
+            <p><button type="button" class="more-info" data-dialog="dialog-bronze">View benefits</button></p>
             <p><a class="details-link apply-link" href="#join-form" data-membership="bronze" aria-label="Apply for Bronze Membership">Apply</a></p>
           </article>
+
           <article class="membership-card card" data-membership="silver" tabindex="0" aria-labelledby="silver-title">
             <h4 id="silver-title">Silver Membership</h4>
             <p>Includes advertising and event discounts</p>
-            <p><a href="#" class="more-info" data-dialog="dialog-silver">View benefits</a></p>
+            <p><button type="button" class="more-info" data-dialog="dialog-silver">View benefits</button></p>
             <p><a class="details-link apply-link" href="#join-form" data-membership="silver" aria-label="Apply for Silver Membership">Apply</a></p>
           </article>
+
           <article class="membership-card card" data-membership="gold" tabindex="0" aria-labelledby="gold-title">
             <h4 id="gold-title">Gold Membership</h4>
             <p>Premium benefits, priority spotlight</p>
-            <p><a href="#" class="more-info" data-dialog="dialog-gold">View benefits</a></p>
+            <p><button type="button" class="more-info" data-dialog="dialog-gold">View benefits</button></p>
             <p><a class="details-link apply-link" href="#join-form" data-membership="gold" aria-label="Apply for Gold Membership">Apply</a></p>
           </article>
         </div>
@@ -132,9 +123,8 @@
     </section>
   </main>
 
-  <!-- Dialogs remain unchanged -->
-
-  <dialog id="dialog-np" class="membership-dialog" aria-labelledby="dialog-np-title">
+  <!-- Dialogs -->
+  <dialog id="dialog-np" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-np-title">
     <h3 id="dialog-np-title">NP Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -144,11 +134,11 @@
       </ul>
     </div>
     <div class="dialog-actions">
-      <button class="dialog-close">Close</button>
+      <button type="button" class="dialog-close" aria-label="Close NP benefits">Close</button>
     </div>
   </dialog>
 
-  <dialog id="dialog-bronze" class="membership-dialog" aria-labelledby="dialog-bronze-title">
+  <dialog id="dialog-bronze" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-bronze-title">
     <h3 id="dialog-bronze-title">Bronze Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -158,11 +148,11 @@
       </ul>
     </div>
     <div class="dialog-actions">
-      <button class="dialog-close">Close</button>
+      <button type="button" class="dialog-close" aria-label="Close Bronze benefits">Close</button>
     </div>
   </dialog>
 
-  <dialog id="dialog-silver" class="membership-dialog" aria-labelledby="dialog-silver-title">
+  <dialog id="dialog-silver" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-silver-title">
     <h3 id="dialog-silver-title">Silver Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -172,11 +162,11 @@
       </ul>
     </div>
     <div class="dialog-actions">
-      <button class="dialog-close">Close</button>
+      <button type="button" class="dialog-close" aria-label="Close Silver benefits">Close</button>
     </div>
   </dialog>
 
-  <dialog id="dialog-gold" class="membership-dialog" aria-labelledby="dialog-gold-title">
+  <dialog id="dialog-gold" class="membership-dialog" role="dialog" aria-modal="true" aria-labelledby="dialog-gold-title">
     <h3 id="dialog-gold-title">Gold Membership — Benefits</h3>
     <div class="dialog-body">
       <ul>
@@ -186,7 +176,7 @@
       </ul>
     </div>
     <div class="dialog-actions">
-      <button class="dialog-close">Close</button>
+      <button type="button" class="dialog-close" aria-label="Close Gold benefits">Close</button>
     </div>
   </dialog>
 
@@ -214,43 +204,5 @@
   <script src="scripts/spotlight.js?v=1" defer></script>
   <script src="scripts/weather.js?v=1" defer></script>
   <script src="scripts/join.js?v=1" defer></script>
-
-  <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const yearEl = document.getElementById("year");
-      if (yearEl) yearEl.textContent = new Date().getFullYear();
-      const lm = document.getElementById("last-modified");
-      if (lm) lm.textContent = document.lastModified;
-
-      document.getElementById('join-form').addEventListener('submit', function() {
-        document.getElementById('timestamp').value = new Date().toISOString();
-      });
-
-      const navLinks = document.querySelector(".nav-links");
-      const hamburger = document.getElementById("hamburger");
-      const darkToggle = document.getElementById("dark-toggle");
-
-      if (hamburger) {
-        hamburger.addEventListener("click", () => {
-          const isOpen = navLinks.classList.toggle("open");
-          hamburger.setAttribute("aria-expanded", isOpen);
-        });
-      }
-
-      const saved = localStorage.getItem("dark-mode");
-      if (saved === "enabled" || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.body.classList.add("dark");
-        if (darkToggle) darkToggle.setAttribute("aria-pressed", "true");
-      }
-
-      if (darkToggle) {
-        darkToggle.addEventListener("click", () => {
-          const isActive = document.body.classList.toggle("dark");
-          darkToggle.setAttribute("aria-pressed", isActive ? "true" : "false");
-          localStorage.setItem("dark-mode", isActive ? "enabled" : "disabled");
-        });
-      }
-    });
-  </script>
 </body>
 </html>

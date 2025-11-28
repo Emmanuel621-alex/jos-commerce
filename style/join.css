@@ -1,165 +1,103 @@
-/* ============================
-   join.css — Form, cards, modals
-   Put this file at: style/join.css
-   (If you prefer to merge into small.css, copy the block
-   'PASTE INTO small.css' below into your small.css)
-   ============================ */
-
-/* ===========================
-   PASTE INTO small.css IF YOU WANT SINGLE FILE
-   (copy this block into style/small.css instead of using join.css)
-   ===========================
-/* ------------ begin paste ------------- */
+/* style/join.css — Optimized & W3C-friendly
+   - Consolidated variables and fallbacks
+   - Improved responsive grid for cards
+   - Stronger focus styles (no color-mix)
+   - Reduced-motion respected
+*/
 :root{
-  --bg:#ffffff;
-  --card:#ffffff;
-  --text:#0b0b0b;
-  --muted:#666666;
-  --accent:#a7d129; /* light lemon green-ish */
-  --accent-dark:#86b21f;
-  --shadow: 0 6px 20px rgba(11,11,11,0.08);
-  --radius:12px;
-  --max-width:1100px;
-  --gap:1rem;
-  font-family: 'Merriweather', serif;
+  --bg: #ffffff;
+  --surface: #fbfdff;
+  --text: #0b1220;
+  --muted: #5b6b7a;
+  --primary: #2a6fcb;
+  --accent: #0f9d58;
+  --danger: #c0392b;
+  --card-shadow: 0 6px 18px rgba(11,18,32,0.08);
+  --radius: 12px;
+  --container-max: 1100px;
 }
 
-.visually-hidden{ position:absolute !important; height:1px; width:1px; overflow:hidden; clip:rect(1px,1px,1px,1px); white-space:nowrap; }
-
-/* Page container */
-.container-form { padding:1rem; max-width:var(--max-width); margin:0 auto; }
-
-/* Page title */
-.page-title { font-size:1.5rem; margin-bottom:0.5rem; color:var(--text); }
-
-/* layout: form and cards */
-.form-and-cards { display:flex; flex-direction:column; gap:1rem; }
-
-/* Cards grid for membership */
-.cards-grid { display:grid; grid-template-columns:1fr; gap:1rem; }
-
-.membership-card { padding:1rem; border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); transition:transform 300ms ease, opacity 600ms ease; opacity:0; transform: translateY(12px); }
-.membership-card h4 { margin:0 0 0.25rem 0; }
-.membership-card p { margin:0 0 0.5rem 0; color:var(--muted); font-size:0.95rem; }
-.membership-card .more-info { display:inline-block; margin-right:0.75rem; text-decoration:underline; font-size:0.95rem; }
-.membership-card .details-link { text-decoration:none; background:var(--accent); color:#fff; padding:0.4rem 0.65rem; border-radius:8px; font-weight:600; }
-
-/* Reveal animation class applied by JS */
-.cards-grid.animate .membership-card {
-  opacity:1;
-  transform: translateY(0);
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg: #0b1220;
+    --surface: #0f1724;
+    --text: #e6eef8;
+    --muted: #98a4b1;
+    --card-shadow: 0 8px 24px rgba(0,0,0,0.6);
+  }
 }
 
-/* stagger */
-.cards-grid.animate .membership-card:nth-child(1){ transition-delay:0.05s; }
-.cards-grid.animate .membership-card:nth-child(2){ transition-delay:0.12s; }
-.cards-grid.animate .membership-card:nth-child(3){ transition-delay:0.20s; }
-.cards-grid.animate .membership-card:nth-child(4){ transition-delay:0.28s; }
-
-/* Form card */
-.join-form { padding:1rem; border-radius:var(--radius); background:var(--card); box-shadow:var(--shadow); }
-.join-form fieldset { border:0; padding:0; margin:0; display:flex; flex-direction:column; gap:0.6rem; }
-.join-form legend { font-size:1.1rem; margin-bottom:0.5rem; font-weight:700; }
-
-/* Labels wrap inputs — full width stacking on mobile */
-.join-form label { display:flex; flex-direction:column; gap:0.25rem; font-size:0.95rem; }
-.label-text { font-weight:600; color:var(--text); }
-
-/* Inputs */
-.join-form input[type="text"],
-.join-form input[type="email"],
-.join-form input[type="tel"],
-.join-form input[type="search"],
-.join-form select,
-.join-form textarea {
-  padding:0.6rem 0.75rem;
-  border-radius:8px;
-  border:1px solid rgba(0,0,0,0.12);
-  background:#fff;
+*{box-sizing:border-box}
+html, body{height:100%;margin:0}
+body{
+  font-family: 'Merriweather', Georgia, serif;
+  background:var(--bg);
   color:var(--text);
-  font-size:1rem;
-  box-sizing:border-box;
+  line-height:1.45;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
 }
 
-/* Submit */
-.join-form .submit-wrapper { margin-top:0.6rem; }
-.join-form input[type="submit"]{
-  background:var(--accent); color:#fff; border:0; padding:0.6rem 0.8rem; border-radius:10px; font-weight:700; cursor:pointer;
-}
-.join-form input[type="submit"]:focus,
-.join-form input[type="submit"]:hover { background:var(--accent-dark); outline:3px solid rgba(167,209,41,0.12); }
+.container-form{max-width:var(--container-max);margin:1.25rem auto 3rem;padding:1rem}
+.header-container{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem}
+header h1{font-size:1.25rem;margin:0}
+nav#main-nav{display:flex;align-items:center}
+.nav-links{display:flex;gap:1rem;list-style:none;padding:0;margin:0}
+.nav-links a{color:var(--text);text-decoration:none;font-weight:600}
+.nav-links a.active{color:var(--primary)}
+#hamburger{display:none;background:none;border:0;font-size:1.25rem}
+#dark-toggle{background:none;border:0;font-size:1.25rem}
 
-/* hint text */
-.hint { font-size:0.85rem; color:var(--muted); }
-
-/* Dialog styles */
-.membership-dialog {
-  border:0;
-  padding:1rem;
-  border-radius:12px;
-  width:min(520px, 92vw);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
-}
-.membership-dialog::backdrop { background: rgba(11,11,11,0.45); }
-.dialog-body { margin:0.5rem 0 1rem 0; color:var(--muted); }
-.dialog-actions { display:flex; justify-content:flex-end; gap:0.5rem; border-top:0.5px solid rgba(0,0,0,0.06); padding-top:0.5rem; }
-.dialog-close { background:transparent; border:1px solid rgba(0,0,0,0.08); padding:0.45rem 0.6rem; border-radius:8px; cursor:pointer; }
-
-/* Accessibility focus */
-input:focus, select:focus, textarea:focus, button:focus, a:focus { outline:3px solid rgba(167,209,41,0.18); outline-offset:2px; }
-
-/* Responsive layout — medium+ */
-@media (min-width:820px) {
-  .form-and-cards { flex-direction:row; gap:1.5rem; align-items:flex-start; }
-  .join-form { flex: 1 1 60%; }
-  .membership-cards { flex: 1 1 40%; }
-  .cards-grid { grid-template-columns: 1fr; gap:1rem; }
+@media (max-width:720px){
+  #hamburger{display:inline-block}
+  .nav-links{display:none;flex-direction:column;background:var(--surface);position:absolute;top:64px;right:1rem;padding:0.75rem;border-radius:8px;box-shadow:var(--card-shadow)}
+  .nav-links.open{display:flex}
 }
 
-/* Larger screens: show cards as grid 2x2 in the aside */
-@media (min-width:1100px) {
-  .cards-grid { grid-template-columns: repeat(2, 1fr); gap:1rem; }
-}
+.page-title{font-size:1.5rem;margin:0 0 0.75rem}
 
-/* ensure good contrast for text */
-.join-form, .membership-card { color:var(--text); background: #fff; }
+/* Layout: form + cards */
+.form-and-cards{display:grid;grid-template-columns:1fr 360px;gap:1.25rem;align-items:start}
+@media (max-width:980px){.form-and-cards{grid-template-columns:1fr}}
 
-/* Reduce motion preference */
-@media (prefers-reduced-motion: reduce) {
-  .membership-card, .cards-grid.animate .membership-card { transition: none; transform: none; opacity:1; }
-}
-/* ------------ end paste ------------- */
+/* Form */
+.join-form{background:var(--surface);padding:1rem;border-radius:var(--radius);box-shadow:var(--card-shadow)}
+.join-form label{display:block;font-size:0.95rem;color:var(--muted);margin-top:0.75rem}
+.join-form input[type='text'],.join-form input[type='email'],.join-form input[type='tel'],.join-form select,.join-form textarea{width:100%;padding:0.6rem;border-radius:8px;border:1px solid rgba(11,18,32,0.08);margin-top:0.25rem;background:transparent;color:var(--text)}
+.join-form input[type='submit']{background:var(--primary);color:white;border:0;padding:0.6rem 0.9rem;border-radius:8px;font-weight:700;cursor:pointer}
+.join-form input[type='submit']:focus{outline:3px solid rgba(42,111,203,0.25);outline-offset:2px}
+.hint{display:block;font-size:0.82rem;color:var(--muted);margin-top:0.25rem}
 
-/* If using join.css as separate file, the same rules above will apply. You can customize colors here. */
-/* ============================
-   DARK MODE (HIGH-CONTRAST)
-============================ */
-body.dark {
-  --bg-color: #0e0e0e;
-  --card-bg: #1a1a1a;
-  --text-color: #ffffff;
-  --text-black: #000000;
-  --border-color: #333;
-  --accent-color: #8cdaff; /* soft light blue for visibility */
-}
+/* Cards aside */
+.membership-cards{position:relative}
+.cards-grid{display:grid;gap:0.9rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 
-body.dark {
-  background-color: var(--bg-color);
-  color: var(--text-color);
-}
+.membership-card{background:var(--surface);padding:1rem;border-radius:12px;box-shadow:var(--card-shadow);transform:translateY(12px);opacity:0;transition:transform 420ms cubic-bezier(.2,.9,.2,1),opacity 420ms ease;will-change:transform,opacity}
+.membership-card.animate-in{transform:none;opacity:1}
+.membership-card h4{margin:0 0 0.4rem;font-size:1rem}
+.membership-card p{margin:0.25rem 0;color:var(--muted)}
+.membership-card a{color:var(--primary);text-decoration:underline}
+.membership-card:focus{outline:3px solid var(--primary);outline-offset:4px}
 
-/* Cards */
-body.dark .card,
-body.dark article.card {
-  background-color: var(--card-bg);
-  border: 1px solid var(--border-color);
-}
+/* Dialog styling */
+dialog.membership-dialog{border:0;border-radius:10px;padding:1rem;width:min(520px,calc(100% - 40px));background:var(--surface)}
+.dialog-body{margin:0.6rem 0}
+.dialog-actions{text-align:right}
+.dialog-close{background:transparent;border:1px solid rgba(11,18,32,0.08);padding:0.4rem 0.6rem;border-radius:8px;cursor:pointer}
 
-/* Forms */
-body.dark input,
-body.dark textarea,
-body.dark select {
-  background-color: #1c1c1c;
-  color: #ffffff;
-  border: 1px solid #444;
-}
+/* Focus ring for interactive elements */
+:focus{outline:3px solid var(--primary);outline-offset:2px}
+
+/* Utilities */
+.visually-hidden{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px);white-space:nowrap}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){.membership-card{transition:none;transform:none;opacity:1}}
+
+/* Footer */
+footer{padding:1rem 0;background:transparent}
+.footer-content{max-width:var(--container-max);margin:0 auto;padding:0 1rem;display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.footer-content address{font-style:normal;color:var(--muted)}
+
+/* Small screens */
+@media (max-width:520px){.header-container{padding:0.5rem}.container-form{padding:0.6rem}.page-title{font-size:1.25rem}}

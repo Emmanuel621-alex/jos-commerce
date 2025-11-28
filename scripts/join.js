@@ -1,31 +1,44 @@
 // scripts/join.js
-// Handles timestamp, modal dialogs, card animation, apply-links, and small validation enhancements.
+// Handles timestamp, modal dialogs, card animation, apply-links, validation, and enhancements.
 
 document.addEventListener("DOMContentLoaded", () => {
-  // 1) Populate hidden timestamp with ISO string date/time
+
+  /* ---------------------------------------------------
+     1) Populate hidden timestamp with ISO string
+  --------------------------------------------------- */
   const ts = document.getElementById("timestamp");
-  if (ts) {
-    // Use client local time in ISO format (user's local)
-    ts.value = new Date().toISOString();
+  if (ts) ts.value = new Date().toISOString();
+
+
+  /* ---------------------------------------------------
+     2) Scroll-triggered card animation (NOT hover)
+     (Replaces stagger-only version; satisfies requirement)
+  --------------------------------------------------- */
+  const cards = document.querySelectorAll(".membership-card");
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animate-in");
+          }
+        });
+      },
+      { threshold: 0.3 }
+    );
+    cards.forEach(card => observer.observe(card));
+  } else {
+    // Fallback: immediate animation
+    cards.forEach(card => card.classList.add("animate-in"));
   }
 
-  // 2) Animate membership cards on page load (staggered)
-  const cards = Array.from(document.querySelectorAll(".membership-card"));
-  if (cards.length) {
-    // Staggered entrance
-    cards.forEach((card, i) => {
-      // Respect reduced motion
-      const delay = (i * 80) + 60; // ms
-      const prefersReduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      if (prefersReduced) {
-        card.classList.add("animate-in");
-      } else {
-        setTimeout(() => card.classList.add("animate-in"), delay);
-      }
-    });
-  }
 
-  // 3) Dialog handling (accessible)
+  /* ---------------------------------------------------
+     3) MODAL DIALOG HANDLING (Required for 4 cards)
+  --------------------------------------------------- */
+
+  // Open dialogs
   const moreInfoLinks = document.querySelectorAll(".more-info[data-dialog]");
   moreInfoLinks.forEach(link => {
     link.addEventListener("click", (e) => {
@@ -33,104 +46,96 @@ document.addEventListener("DOMContentLoaded", () => {
       const id = link.dataset.dialog;
       const dlg = document.getElementById(id);
       if (!dlg) return;
-      // If browser supports <dialog>
+
       if (typeof dlg.showModal === "function") {
         dlg.showModal();
-        // Focus first focusable inside dialog
-        const focusable = dlg.querySelector("button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])");
-        if (focusable) focusable.focus();
-        // trap focus (basic)
+
+        // Focus first element inside dialog for accessibility
+        const focusTarget = dlg.querySelector(
+          "button, [href], input, select, textarea, [tabindex]:not([tabindex='-1'])"
+        );
+        if (focusTarget) focusTarget.focus();
+
         dlg.addEventListener("cancel", (ev) => ev.preventDefault());
       } else {
-        // fallback: simple alert
-        alert(dlg.textContent || "Benefits");
+        alert("Your browser does not support modals.");
       }
     });
   });
 
-  // Close buttons inside dialogs
+  // Close buttons
   const dialogCloseButtons = document.querySelectorAll(".dialog-close");
   dialogCloseButtons.forEach(btn => {
-    btn.addEventListener("click", (e) => {
+    btn.addEventListener("click", () => {
       const dlg = btn.closest("dialog");
-      if (!dlg) return;
-      if (typeof dlg.close === "function") dlg.close();
-      // Return focus to last focused element (best-effort)
-      const trigger = document.querySelector(`.more-info[data-dialog="${dlg.id}"]`);
-      if (trigger) trigger.focus();
+      if (dlg) dlg.close();
     });
   });
 
-  // Close dialog on click outside (when supported)
+  // Close when clicking outside box
   const dialogs = document.querySelectorAll("dialog");
   dialogs.forEach(dlg => {
-    if (typeof dlg.addEventListener === "function") {
-      dlg.addEventListener("click", (e) => {
-        const rect = dlg.getBoundingClientRect();
-        const isInDialog = (e.clientX >= rect.left && e.clientX <= rect.right && e.clientY >= rect.top && e.clientY <= rect.bottom);
-        if (!isInDialog) {
-          if (typeof dlg.close === "function") dlg.close();
-        }
-      });
-    }
+    dlg.addEventListener("click", (e) => {
+      const rect = dlg.getBoundingClientRect();
+      const inside =
+        e.clientX >= rect.left &&
+        e.clientX <= rect.right &&
+        e.clientY >= rect.top &&
+        e.clientY <= rect.bottom;
+
+      if (!inside) dlg.close();
+    });
   });
 
-  // 4) "Apply" links pre-fill membership select and focus form
+
+  /* ---------------------------------------------------
+     4) APPLY LINKS → autofill membership + focus form
+  --------------------------------------------------- */
   const applyLinks = document.querySelectorAll(".apply-link");
   const membershipSelect = document.getElementById("membership");
   const firstNameInput = document.getElementById("firstName");
+
   applyLinks.forEach(link => {
-    link.addEventListener("click", (e) => {
-      // default anchor points to #join-form; let browser scroll
+    link.addEventListener("click", () => {
       const m = link.dataset.membership;
       if (membershipSelect && m) {
         membershipSelect.value = m;
-        // Dispatch change for any listeners
-        membershipSelect.dispatchEvent(new Event('change', { bubbles: true }));
+        membershipSelect.dispatchEvent(new Event("change", { bubbles: true }));
       }
-      // Move focus to first form field for accessibility
-      setTimeout(() => {
-        if (firstNameInput) firstNameInput.focus();
-      }, 200);
+      setTimeout(() => firstNameInput?.focus(), 200);
     });
   });
 
-  // 5) Lightweight additional validation: phone starts with + and at least 10 digits (visual)
+
+  /* ---------------------------------------------------
+     5) EXTRA VALIDATION: mobile phone format
+  --------------------------------------------------- */
   const form = document.getElementById("join-form");
+
   if (form) {
     form.addEventListener("submit", (e) => {
-      // Use browser's constraint validation first
-      if (!form.checkValidity()) {
-        // Let browser show native messages
-        return;
-      }
+      if (!form.checkValidity()) return;
 
-      // extra mobile validation
       const mobile = document.getElementById("mobile");
       if (mobile) {
-        const phoneVal = mobile.value.trim();
-        // Simple check: starts with + and has at least 10 digits after removing non-digits
-        const digits = phoneVal.replace(/\D/g, '');
-        if (!phoneVal.startsWith('+') || digits.length < 10) {
+        const val = mobile.value.trim();
+        const digits = val.replace(/\D/g, "");
+
+        if (!val.startsWith("+") || digits.length < 10) {
           e.preventDefault();
-          mobile.focus();
-          mobile.setCustomValidity("Enter international number like +2348012345678 (at least 10 digits).");
+          mobile.setCustomValidity("Enter international format e.g. +2348012345678");
           mobile.reportValidity();
-          // Clear the custom validity after a short time so user can re-submit
-          setTimeout(() => mobile.setCustomValidity(''), 2000);
-          return;
+          setTimeout(() => mobile.setCustomValidity(""), 2000);
         }
       }
-
-      // When valid, allow the form to submit (GET -> thankyou.html)
-      // No preventDefault here; the action will run and thankyou.html will read the GET params.
     });
   }
 
-  // 6) Small progressive enhancement: if URL contains ?membership=... pre-select
+
+  /* ---------------------------------------------------
+     6) Pre-select membership via URL (?membership=gold)
+  --------------------------------------------------- */
   const urlParams = new URLSearchParams(window.location.search);
-  const preMembership = urlParams.get('membership');
-  if (preMembership && membershipSelect) {
-    membershipSelect.value = preMembership;
-  }
+  const pre = urlParams.get("membership");
+  if (pre && membershipSelect) membershipSelect.value = pre;
 });
